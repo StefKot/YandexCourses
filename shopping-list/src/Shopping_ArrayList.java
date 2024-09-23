@@ -1,13 +1,13 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Shopping {
+public class Shopping_ArrayList {
 
     public static void main(String[] args) {
 
         System.out.println("Вас приветствует список покупок!");
 
-        String[] shoppingList = new String[8];
-        int productCount = 0;
+        ArrayList<String> shoppingList = new ArrayList<>(8);
 
         Scanner scanner = new Scanner(System.in);
 
@@ -27,51 +27,30 @@ public class Shopping {
                     System.out.println("Введите название товара: ");
                     System.out.print("--> ");
                     String productName = scanner.next();
-                    boolean productExists = false;
-                    for (int i = 0; i < productCount; i++) {
-                        if (shoppingList[i] != null && shoppingList[i].equals(productName)) {
-                            productExists = true;
-                            break;
-                        }
-                    }
-                    if (productExists) {
+                    if (shoppingList.contains(productName)) {
                         System.out.println("Товар уже есть в списке");
-                    }
-                    else {
-                        if (productCount == shoppingList.length) {
-                            String[] biggerShoppingList = new String[shoppingList.length * 2];
-                            // можно сделать через System.arraycopy();
-                            for (int i = 0; i < shoppingList.length; i++) {
-                                biggerShoppingList[i] = shoppingList[i];
-                            }
-                            shoppingList = biggerShoppingList;
-                        }
-                        shoppingList[productCount] = productName;
-                        productCount++;
-                        System.out.println("Товар " + productName + " добавлен в список под номером " + productCount);
+                    } else {
+                        shoppingList.add(productName);
+                        System.out.println("Товар " + productName + " добавлен в список под номером " + shoppingList.size());
                     }
                     break;
-
                 case "2":
-                    if (productCount == 0) {
+                    if (shoppingList.isEmpty()) {
                         System.out.println("Список товаров пуст");
                     } else {
                         System.out.println("Список товаров: ");
-                        for (int i = 0; i < productCount; i++) {
-                            System.out.println(i + 1 + ". " + shoppingList[i]);
+                        for (int i = 0; i < shoppingList.size(); i++) {
+                            System.out.println(i + 1 + ". " + shoppingList.get(i));
                         }
                     }
-                    break;
 
+                    break;
                 case "3":
-                    shoppingList = new String[8];
-                    productCount = 0;
+                    shoppingList.clear();
                     System.out.println("Список товаров очищен");
                     break;
-
                 case "4":
                     break label;
-
                 default:
                     System.out.println("Неизвестная команда!");
                     break;
