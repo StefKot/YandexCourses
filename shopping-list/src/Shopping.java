@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static java.lang.Integer.parseInt;
-
 public class Shopping {
 
     public static void main(String[] args) {
@@ -24,7 +22,7 @@ public class Shopping {
             String actionNumber = scanner.next();
 
             if (actionNumber.equals("1")) {
-                System.out.println("Введите название товара: "); //добавить товар
+                System.out.println("Введите название товара: ");
                 System.out.print("--> ");
                 String productName = scanner.next();
                 if (shoppingList.contains(productName)) {
@@ -39,7 +37,7 @@ public class Shopping {
                 if (shoppingList.isEmpty()) {
                     System.out.println("Список товаров пуст");
                 } else {
-                    System.out.println("Список товаров: "); // обработка остальных действий
+                    System.out.println("Список товаров: ");
                     for (int i = 0; i < shoppingList.size(); i++) {
                         System.out.println(i + 1 + ". " + shoppingList.get(i));
                     }
@@ -47,9 +45,6 @@ public class Shopping {
 
             }
             else if (actionNumber.equals("3")) {
-                /*for (int i = shoppingList.size() - 1; i >= 0; i--) {
-                    shoppingList.remove(i);
-                }*/
                 shoppingList.clear();
                 System.out.println("Список товаров очищен");
             }
