@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class MonthData {
     int[] days = new int[30];
 
@@ -38,9 +40,9 @@ public class MonthData {
         return finalSeries;
     }
 
-    void printStatistic() {
+    void printStatistic(Scanner scan) {
         System.out.println("Введите число месяца");
-        // ввод и проверка номера месяца
+        int monthNumber = scan.nextInt(); // ввод и проверка номера месяца
 
         monthData = 0; // получение соответствующего месяца
         int sumSteps = 0; // получение суммы шагов за месяц

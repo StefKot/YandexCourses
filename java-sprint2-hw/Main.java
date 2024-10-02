@@ -20,10 +20,6 @@ public class Main {
                 double expense = scanner.nextDouble();
                 moneyBeforeSalary = expensesManager.saveExpense(moneyBeforeSalary, expense, day);
             } else if (command == 4) {
-                expensesManager.printAllExpenses();
-            } else if (command == 5) {
-                System.out.println("Самая большая сумма расходов на этой неделе составила " +  expensesManager.findMaxExpense() + " руб.");
-            } else if (command == 0) {
                 System.out.println("Выход");
                 break;
             } else {
