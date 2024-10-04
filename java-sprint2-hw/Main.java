@@ -19,8 +19,7 @@ public class Main {
                     stepTracker.changeStepGoal();
                     break;
                 case 3:
-                    monthData.
-
+                    monthData.printStatistic(scanner);
                     break;
                 case 4:
                     System.out.println("Выход");

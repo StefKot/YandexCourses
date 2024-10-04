@@ -1,8 +1,10 @@
 import java.util.Scanner;
 
 public class MonthData {
+    Scanner scanner;
     int[] days = new int[30];
     Converter converter = new Converter();
+    StepTracker stepTracker = new StepTracker(scanner);
 
     void printDaysAndStepsFromMonth() {
         for (int i = 0; i < days.length; i++) {
@@ -34,14 +36,25 @@ public class MonthData {
     int bestSeries(int goalByStepsPerDay) {
         int currentSeries = 0;
         int finalSeries = 0;
+
         for (int i = 0; i < days.length; i++) {
-            // поиск максимальной серии
-            System.out.println();
+            if (days[i] >= goalByStepsPerDay) { // поиск максимальной серии
+                currentSeries++;
+            } else {
+                if (currentSeries > finalSeries) {
+                    finalSeries = currentSeries;
+                }
+                currentSeries = 0;
+            }
         }
+        if (currentSeries > finalSeries) {
+            finalSeries = currentSeries;
+        }
+
         return finalSeries;
     }
 
-    int avgSteps() {
+    int averageSteps() {
         return sumStepsFromMonth() / 30;
     }
 
@@ -51,15 +64,18 @@ public class MonthData {
         if (monthNumber < 0 || monthNumber > 12) {
             System.out.println("Номер месяца введен некорректно");
         }
-        monthData = 0; // получение соответствующего месяца
-        int sumSteps = 0; // получение суммы шагов за месяц
-        printDaysAndStepsFromMonth();// вывод общей статистики по дням
-        sumStepsFromMonth();// вывод суммы шагов за месяц
-        maxSteps(); // вывод максимального пройденного количества шагов за месяц
-        avgSteps(); // вывод среднего пройденного количества шагов за месяц
-        System.out.println(converter.convertToKm(sumStepsFromMonth()));// вывод пройденной за месяц дистанции в километрах
-        System.out.println(converter.convertStepsToKilocalories(sumStepsFromMonth()));// вывод количества сожжённых килокалорий за месяц
-        bestSeries(); // вывод лучшей серии
+        // получение соответствующего месяца
+        int sumSteps = sumStepsFromMonth(); // получение суммы шагов за месяц
+        int distance = converter.convertToKm(sumStepsFromMonth());
+        int calories = converter.convertStepsToKilocalories(sumStepsFromMonth());
+
+        printDaysAndStepsFromMonth(); // вывод общей статистики по дням
+        System.out.println("Сумма шагов за месяц: " + sumSteps); // вывод суммы шагов за месяц
+        System.out.println("Максимальное пройденное количество шагов ща месяц: " + maxSteps()); // вывод максимального пройденного количества шагов за месяц
+        System.out.println("Среднее пройденное количество шагов за месяц: " + averageSteps()); // вывод среднего пройденного количества шагов за месяц
+        System.out.println("Пройденная за месяц дистанция в километрах: " + distance);// вывод пройденной за месяц дистанции в километрах
+        System.out.println("Количество соженных килокалорий за месяц: " + calories);// вывод количества сожжённых килокалорий за месяц
+        System.out.println("Лучшая серия: " + bestSeries(stepTracker.goalByStepsPerDay));; // вывод лучшей серии
         System.out.println(); // дополнительный перенос строки
     }
 }
