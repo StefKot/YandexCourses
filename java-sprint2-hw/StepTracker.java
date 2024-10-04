@@ -19,24 +19,27 @@ class StepTracker {
         int monthNumber = scanner.nextInt() - 1;
         if (monthNumber < 0 || monthNumber > 12) {
             System.out.println("Номер месяца введен некорректно");
-        }
+        } else {
+            System.out.println("Введите день от 1 до 30 (включительно)");
+            int day = scanner.nextInt(); // ввод и проверка дня
+            if (day < 1 || day > 30) {
+                System.out.println("День введен некорректно");
+            } else {
+                System.out.println("Введите количество шагов");
+                int steps = scanner.nextInt(); // ввод и проверка количества шагов
+                if (steps <= 0) {
+                    System.out.println("Количество шагов введено некорректно");
+                } else {
+                    // получение соответствующего объекта MonthData из массива
+                    MonthData monthData = new MonthData();
+                    // сохранение полученных данных
+                    monthData.days[day] = steps;
+                    System.out.println(steps + " шагов записано");
+                }
+            }
 
-        System.out.println("Введите день от 1 до 30 (включительно)");
-        int day = scanner.nextInt(); // ввод и проверка дня
-        if (day < 1 || day > 30) {
-            System.out.println("День введен некорректно");
-        }
 
-        System.out.println("Введите количество шагов");
-        int steps = scanner.nextInt(); // ввод и проверка количества шагов
-        if (steps <= 0) {
-            System.out.println("Количество шагов введено некорректно");
         }
-
-        // получение соответствующего объекта MonthData из массива
-        MonthData monthData = new MonthData();
-        // сохранение полученных данных
-        monthData.days[day] = steps;
     }
 
     void changeStepGoal() {

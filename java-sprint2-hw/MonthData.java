@@ -1,15 +1,20 @@
 import java.util.Scanner;
 
 public class MonthData {
-    Scanner scanner;
     int[] days = new int[30];
     Converter converter = new Converter();
-    StepTracker stepTracker = new StepTracker(scanner);
+    StepTracker stepTracker;
+    int goalByStepsPerDay;
+
+    // Конструктор, принимающий goalByStepsPerDay
+    MonthData(int goalByStepsPerDay) {
+        this.goalByStepsPerDay = goalByStepsPerDay;
+    }
 
     void printDaysAndStepsFromMonth() {
         for (int i = 0; i < days.length; i++) {
             // вывод элементов массива в нужном формате
-            System.out.println();
+            System.out.println(i + "-й день: " + days[i]);
         }
     }
 
@@ -69,13 +74,13 @@ public class MonthData {
         int distance = converter.convertToKm(sumStepsFromMonth());
         int calories = converter.convertStepsToKilocalories(sumStepsFromMonth());
 
-        printDaysAndStepsFromMonth(); // вывод общей статистики по дням
-        System.out.println("Сумма шагов за месяц: " + sumSteps); // вывод суммы шагов за месяц
-        System.out.println("Максимальное пройденное количество шагов ща месяц: " + maxSteps()); // вывод максимального пройденного количества шагов за месяц
-        System.out.println("Среднее пройденное количество шагов за месяц: " + averageSteps()); // вывод среднего пройденного количества шагов за месяц
-        System.out.println("Пройденная за месяц дистанция в километрах: " + distance);// вывод пройденной за месяц дистанции в километрах
-        System.out.println("Количество соженных килокалорий за месяц: " + calories);// вывод количества сожжённых килокалорий за месяц
-        System.out.println("Лучшая серия: " + bestSeries(stepTracker.goalByStepsPerDay));; // вывод лучшей серии
-        System.out.println(); // дополнительный перенос строки
+        printDaysAndStepsFromMonth();
+        System.out.println("*** Общее количество шагов за месяц:" + sumSteps);
+        System.out.println("*** Максимальное пройденное количество шагов за месяц: " + maxSteps());
+        System.out.println("*** Среднее количество шагов: " + averageSteps());
+        System.out.println("*** Пройденная дистанция (в км): " + distance);
+        System.out.println("*** Количество сожжённых килокалорий: " + calories);
+        System.out.println("*** Лучшая серия: " + bestSeries(stepTracker.goalByStepsPerDay));;
+        System.out.println();
     }
 }
