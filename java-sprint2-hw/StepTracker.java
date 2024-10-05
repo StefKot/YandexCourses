@@ -3,10 +3,13 @@ import java.util.Scanner;
 class StepTracker {
     Scanner scanner;
     MonthData[] monthToData = new MonthData[12];
-    int goalByStepsPerDay = 10000;
+    int goalByStepsPerDay;
+    MonthData monthData = new MonthData();
+    Converter converter = new Converter();
 
     StepTracker(Scanner scan) {
         scanner = scan;
+        goalByStepsPerDay = 10000;
 
         for (int i = 0; i < monthToData.length; i++) {
             monthToData[i] = new MonthData();
@@ -49,6 +52,29 @@ class StepTracker {
             System.out.println("Цель по шагам на день должна быть больше 0");
             goalByStepsPerDay = 10000;
             System.out.println("Значение цели по шагам за день взято по умолчанию");
+        } else {
+            System.out.println("Цель по шагам успешно изменена на " + goalByStepsPerDay);
         }
+    }
+
+    void printStatistic(Scanner scan) {
+        System.out.println("Введите число месяца: ");
+        int monthNumber = scan.nextInt() - 1; // ввод и проверка номера месяца
+        if (monthNumber < 0 || monthNumber > 12) {
+            System.out.println("Номер месяца введен некорректно");
+        }
+        // получение соответствующего месяца
+        int sumSteps = monthData.sumStepsFromMonth(); // получение суммы шагов за месяц
+        int distance = converter.convertToKm(monthData.sumStepsFromMonth());
+        int calories = converter.convertStepsToKilocalories(monthData.sumStepsFromMonth());
+
+        monthData.printDaysAndStepsFromMonth();
+        System.out.println("*** Общее количество шагов за месяц:" + sumSteps);
+        System.out.println("*** Максимальное пройденное количество шагов за месяц: " + monthData.maxSteps());
+        System.out.println("*** Среднее количество шагов: " + monthData.averageSteps());
+        System.out.println("*** Пройденная дистанция (в км): " + distance);
+        System.out.println("*** Количество сожжённых килокалорий: " + calories);
+        System.out.println("*** Лучшая серия: " + monthData.bestSeries(goalByStepsPerDay));;
+        System.out.println();
     }
 } 

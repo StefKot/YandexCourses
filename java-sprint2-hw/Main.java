@@ -4,7 +4,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         StepTracker stepTracker = new StepTracker(scanner);
-        MonthData monthData = new MonthData();
 
         label:
         while (true) {
@@ -19,7 +18,7 @@ public class Main {
                     stepTracker.changeStepGoal();
                     break;
                 case 3:
-                    monthData.printStatistic(scanner);
+                    stepTracker.printStatistic(scanner);
                     break;
                 case 4:
                     System.out.println("Выход");
