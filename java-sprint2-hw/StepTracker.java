@@ -57,12 +57,12 @@ class StepTracker {
 
     void printStatistic(Scanner scan) {
         System.out.println("Введите число месяца: ");
-        int monthNumber = scan.nextInt() - 1; // ввод и проверка номера месяца
+        int monthNumber = scan.nextInt() - 1; 
         if (monthNumber < 0 || monthNumber > 12) {
             System.out.println("Номер месяца введен некорректно");
         }
-        // получение соответствующего месяца
-        int sumSteps = monthData.sumStepsFromMonth(); // получение суммы шагов за месяц
+
+        int sumSteps = monthData.sumStepsFromMonth();
         int distance = converter.convertToKm(monthData.sumStepsFromMonth());
         int calories = converter.convertStepsToKilocalories(monthData.sumStepsFromMonth());
 
