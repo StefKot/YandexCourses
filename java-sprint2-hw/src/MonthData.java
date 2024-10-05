@@ -1,5 +1,6 @@
 public class MonthData {
     int[] days = new int[30];
+    int daysInMonth = 30;
 
     void printDaysAndStepsFromMonth() {
         for (int i = 0; i < days.length; i++) {
@@ -47,7 +48,7 @@ public class MonthData {
     }
 
     int averageSteps() {
-        return sumStepsFromMonth() / 30;
+        return sumStepsFromMonth() / daysInMonth;
     }
 
 }
