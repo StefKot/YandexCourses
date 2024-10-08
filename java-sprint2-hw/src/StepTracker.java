@@ -21,11 +21,13 @@ class StepTracker {
         System.out.println( "1 - Январь, 2 - Февраль, 3 - Март, 4 - Апрель, 5 - Май, 6 - Июнь, " + "\n" +
                 "7 - Июль, 8 - Август, 9 - Сентябрь, 10 - Октябрь, 11 - Ноябрь, 12 - Декабрь");
         int monthNumber = scanner.nextInt() - 1;
+
         if (monthNumber < 0 || monthNumber > 12) {
             System.out.println("Неверный номер месяца <--Обратите внимание на вывод приложения-->");
         } else {
             System.out.println("Введите день от 1 до 30 (включительно)");
             int day = scanner.nextInt();
+
             if (day < 1 || day > 30) {
                 System.out.println("День введен некорректно");
             } else {
@@ -39,14 +41,13 @@ class StepTracker {
                     monthData.days[day - 1] = steps;
                 }
             }
-
-
         }
     }
 
     void changeStepGoal() {
         System.out.println("Введите цель по шагам за день: ");
         int goal = scanner.nextInt();
+
         if (goal <= 0) {
             System.out.println("Цель должна быть больше нуля! <--Обратите внимание на вывод приложения-->");
             System.out.println("Значение цели по шагам за день взято по умолчанию");

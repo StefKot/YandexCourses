@@ -10,6 +10,7 @@ public class MonthData {
 
     int sumStepsFromMonth() {
         int sumSteps = 0;
+
         for (int i = 0; i < days.length; i++) {
             sumSteps += days[i];
         }
@@ -18,6 +19,7 @@ public class MonthData {
 
     int maxSteps() {
         int maxSteps = 0;
+
         for (int i = 0; i < days.length; i++) {
             if (days[i] > maxSteps) {
                 maxSteps = days[i];
