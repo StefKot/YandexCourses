@@ -13,4 +13,5 @@ Courses from Yandex Practical Java Developer
 
 # Sprint 3
 
-![image](https://github.com/user-attachments/assets/14a7498c-d2f6-4038-9b56-fea3f4f7798f)
+![image](https://github.com/user-attachments/assets/bd338339-c4af-44a3-8f17-45b3084cbada)
+
