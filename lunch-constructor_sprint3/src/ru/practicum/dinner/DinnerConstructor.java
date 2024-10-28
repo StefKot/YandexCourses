@@ -4,44 +4,46 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class DinnerConstructor {
+
     Dishes dishes = new Dishes();
     Random random = new Random();
 
-
     void addNewDish(String dishType, String dishName) {
         if (dishes.foodByCategories.containsKey(dishType)) {
-            ArrayList <String> names = dishes.foodByCategories.get(dishType);
+            ArrayList<String> names = dishes.foodByCategories.get(dishType);
             names.add(dishName);
         } else {
-            ArrayList <String> dishes = new ArrayList<>();
-            dishes.add(dishName);
-            dishes.foodByCategories.put(dishType, dishes);
-
+            ArrayList<String> meals = new ArrayList<>();
+            meals.add(dishName);
+            dishes.foodByCategories.put(dishType, meals);
         }
     }
 
-//    static void addNewDish() {
-//
-//
-//        // добавьте новое блюдо
-//        if (dc.dishes.containsKey(dishType)) {
-//            ArrayList<String> dishes = dc.dishes.get(dishType);
-//            dishes.add(dishName);
-//        } else {
-//            ArrayList<String> dishes = new ArrayList<>();
-//            dishes.add(dishName);
-//            dc.dishes.put(dishType, dishes);
-//        }
-//    }
+    void generateDishCombo(int numberOfCombos, ArrayList<String> dishTypes) {
+        if (dishes.foodByCategories.isEmpty()) {
+            System.out.println("Вы еще не создали таблицу с блюдами!");
+            return;
+        }
 
+        ArrayList<ArrayList<String>> randomCombos = new ArrayList<>();
 
-
-    static void generateDishCombo(ArrayList<String> dishTypes) {
-
-        // сгенерируйте комбинации блюд и выведите на экран
         for (int i = 0; i < numberOfCombos; i++) {
+            ArrayList<String> combo = new ArrayList<>();
+
+            for (String dishType : dishTypes) {
+                ArrayList<String> dishesOfType = dishes.foodByCategories.get(dishType);
+                if (dishesOfType != null && !dishesOfType.isEmpty()) {
+                    int randomIndex = random.nextInt(dishesOfType.size());
+                    combo.add(dishesOfType.get(randomIndex));
+                }
+            }
+
+            randomCombos.add(combo);
+        }
+
+        for (int i = 0; i < randomCombos.size(); i++) {
             System.out.println("Комбо " + (i + 1));
-            System.out.println();
+            System.out.println(randomCombos.get(i));
         }
     }
 }

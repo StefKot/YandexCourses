@@ -7,7 +7,6 @@ public class Main {
 
     static DinnerConstructor dc;
     static Scanner scanner;
-    static Dishes dishes;
 
     public static void main(String[] args) {
         dc = new DinnerConstructor();
@@ -21,8 +20,16 @@ public class Main {
                 case "1":
                     System.out.println("Введите тип блюда:");
                     String dishType = scanner.nextLine();
+                    if (dishType.isEmpty()) {
+                        System.out.println("Тип блюда не может быть пустым!");
+                        break;
+                    }
                     System.out.println("Введите название блюда:");
                     String dishName = scanner.nextLine();
+                    if (dishName.isEmpty()) {
+                        System.out.println("Название блюда не может быть пустым!");
+                        break;
+                    }
                     dc.addNewDish(dishType, dishName);
                     break;
                 case "2":
@@ -30,6 +37,7 @@ public class Main {
 
                     System.out.println("Введите количество наборов, которые нужно сгенерировать:");
                     int numberOfCombos = scanner.nextInt();
+                    System.out.println("Название блюда не может быть пустым!");
                     scanner.nextLine();
 
                     System.out.println("Вводите типы блюда, разделяя символом переноса строки (enter). Для завершения ввода введите пустую строку");
@@ -42,10 +50,13 @@ public class Main {
                         dishTypes.add(nextItem);
                         nextItem = scanner.nextLine();
                     }
-                    dc.generateDishCombo(dishTypes);
+                    dc.generateDishCombo(numberOfCombos, dishTypes);
                     break;
                 case "3":
                     return;
+                default:
+                    System.out.println("Извините, такой команды пока нет.");
+                    break;
             }
         }
     }
