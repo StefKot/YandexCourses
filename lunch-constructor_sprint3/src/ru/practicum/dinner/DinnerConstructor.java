@@ -19,6 +19,22 @@ public class DinnerConstructor {
         }
     }
 
+    boolean isDishEmpty(String dishType, String dishName) {
+        boolean isEmpty = false;
+        if (dishType.isEmpty() || dishName.isEmpty()) {
+            isEmpty = true;
+        }
+        return isEmpty;
+    }
+
+    boolean containsDishType(String dishType) {
+        boolean containsDishType = false;
+        if (dishes.foodByCategories.containsKey(dishType)) {
+            containsDishType = true;
+        }
+        return containsDishType;
+    }
+
     void generateDishCombo(int numberOfCombos, ArrayList<String> dishTypes) {
         if (dishes.foodByCategories.isEmpty()) {
             System.out.println("Вы еще не создали таблицу с блюдами!");
