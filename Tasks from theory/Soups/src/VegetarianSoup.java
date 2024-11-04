@@ -1,6 +1,4 @@
 public class VegetarianSoup extends SoupBase {
-    double water;
-    double salt;
     double vegetables;
 
     // реализуйте необходимые конструкторы

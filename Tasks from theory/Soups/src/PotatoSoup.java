@@ -1,7 +1,4 @@
 public class PotatoSoup extends Bouillon {
-    double water;
-    double salt;
-    double meat;
     double potato;
     double carrot;
 

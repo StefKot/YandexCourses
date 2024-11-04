@@ -1,6 +1,4 @@
 public class Bouillon extends SoupBase {
-    double water;
-    double salt;
     double meat;
 
     // реализуйте необходимые конструкторы
