@@ -75,3 +75,8 @@ Courses from Yandex Practical Java Developer
 
   ![image](https://github.com/user-attachments/assets/b1f91b38-000d-47a3-95c4-cf3307489555)
 * 3 — выход из программы. При выборе этой команды программа должна завершить работу.
+
+# Sprint 4
+
+![image](https://github.com/user-attachments/assets/61726be5-8563-4e75-ae03-2138fe5ad0f3)
+
